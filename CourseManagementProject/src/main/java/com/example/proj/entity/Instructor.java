@@ -28,8 +28,8 @@ public class Instructor {
 	private String name;
 	private String qualification;
 	@JsonBackReference
-	  @OneToOne
-	    @JoinColumn(name = "user_id") // This creates a foreign key in the 'instructor' table
-	    private User user;
+	@OneToOne
+	@JoinColumn(name = "user_id") // This creates a foreign key in the 'instructor' table
+	private User user;
 	
 }

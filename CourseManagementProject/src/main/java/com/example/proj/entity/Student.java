@@ -46,6 +46,6 @@ public class Student {
 	private List<Course> courses;
 	 @JsonBackReference
 	 @OneToOne  
-	    private User user;
+	 private User user;
 	
 }
