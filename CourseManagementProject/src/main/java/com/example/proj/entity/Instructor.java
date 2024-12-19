@@ -1,5 +1,7 @@
 package com.example.proj.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,6 +27,7 @@ public class Instructor {
 	@Column(name="name")
 	private String name;
 	private String qualification;
+	@JsonBackReference
 	  @OneToOne
 	    @JoinColumn(name = "user_id") // This creates a foreign key in the 'instructor' table
 	    private User user;

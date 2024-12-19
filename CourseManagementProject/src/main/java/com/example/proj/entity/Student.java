@@ -2,6 +2,9 @@ package com.example.proj.entity;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,9 +42,10 @@ public class Student {
 			joinColumns = @JoinColumn(name="student_id"),
 			inverseJoinColumns = @JoinColumn(name="course_id")
 			)
-	
+	@JsonManagedReference
 	private List<Course> courses;
-	 @OneToOne  // Assuming the User class has a reference to Student
+	 @JsonBackReference
+	 @OneToOne  
 	    private User user;
 	
 }
