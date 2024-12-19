@@ -27,6 +27,7 @@ public class Instructor {
 	@Column(name="name")
 	private String name;
 	private String qualification;
+	
 	@JsonBackReference
 	@OneToOne
 	@JoinColumn(name = "user_id") // This creates a foreign key in the 'instructor' table
