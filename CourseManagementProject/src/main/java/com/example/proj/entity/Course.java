@@ -36,7 +36,5 @@ public class Course {
     @ManyToMany(mappedBy = "courses")
     @JsonBackReference  // Preventing infinite recursion
     private List<Student> students;
-    
-    
 }
 

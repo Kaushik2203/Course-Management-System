@@ -47,6 +47,5 @@ public class Student {
 	 @JsonBackReference
 	 @OneToOne  
 	 private User user;
-	
 	 
 }
