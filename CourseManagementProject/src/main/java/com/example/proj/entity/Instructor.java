@@ -32,4 +32,5 @@ public class Instructor {
 	@JoinColumn(name = "user_id") // This creates a foreign key in the 'instructor' table
 	private User user;
 	
+	
 }

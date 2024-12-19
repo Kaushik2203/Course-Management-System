@@ -37,5 +37,6 @@ public class Course {
     @JsonBackReference  // Preventing infinite recursion
     private List<Student> students;
     
+    
 }
 
