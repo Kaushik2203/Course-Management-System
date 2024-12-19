@@ -34,7 +34,4 @@ public class User {
 	@OneToOne(mappedBy = "user")
     private Instructor instructor; 
 	
-	
-	
-	
 }
