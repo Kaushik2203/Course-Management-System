@@ -25,8 +25,8 @@ public class Instructor {
 	@Column(name="name")
 	private String name;
 	private String qualification;
-	@OneToOne
-	@JoinColumn(name = "user_id")
-	private User user;
+	  @OneToOne
+	    @JoinColumn(name = "user_id") // This creates a foreign key in the 'instructor' table
+	    private User user;
 	
 }
