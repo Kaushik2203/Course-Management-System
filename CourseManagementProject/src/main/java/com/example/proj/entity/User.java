@@ -33,6 +33,7 @@ public class User {
 	@JsonManagedReference
 	@OneToOne(mappedBy = "user")
     private Instructor instructor; 
+	
 }
 
 

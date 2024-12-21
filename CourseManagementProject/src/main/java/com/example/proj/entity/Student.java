@@ -48,6 +48,7 @@ public class Student {
 	 @OneToOne  
 	 private User user;
 	 
+	 
 }
 
 

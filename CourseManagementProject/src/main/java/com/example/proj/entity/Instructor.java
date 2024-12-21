@@ -43,5 +43,6 @@ public class Instructor {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "user_id") // This creates a foreign key in the 'instructor' table
 	private User user;
+	
 }
 
