@@ -31,10 +31,11 @@ public class Course {
 
     @ManyToOne
     @JoinColumn(name = "instructor_id")
+    @JsonBackReference 
     private Instructor instructor;
     
     @ManyToMany(mappedBy = "courses")
-    @JsonBackReference  // Preventing infinite recursion
+    @JsonBackReference  
     private List<Student> students;
     
 }
