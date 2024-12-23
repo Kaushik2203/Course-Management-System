@@ -49,4 +49,20 @@ public class UserServiceImp implements UserService {
 		
 	}
 
+	@Override
+	public List<User> findByFirstName(String firstName) {
+		// TODO Auto-generated method stub
+		return userRepo.findByFirstName(firstName);
+	}
+
+	@Override
+	public List<User> findByLastName(String lastName) {
+		// TODO Auto-generated method stub
+		return userRepo.findByLastName(lastName);
+	}
+
+	
+
+	
+
 }

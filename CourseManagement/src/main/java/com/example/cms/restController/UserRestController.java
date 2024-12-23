@@ -32,6 +32,14 @@ public class UserRestController {
 		return userService.getById(uid);
 	}
 	
+	@GetMapping("/users/firstname/{firstname}")
+	public List<User> getUserByFirstName(@PathVariable("firstname") String firstName) {
+		return userService.findByFirstName(firstName);
+	}
+	@GetMapping("/users/lastname/{lastname}")
+	public List<User> getUserByLastName(@PathVariable("lastname") String lastName){
+		return userService.findByLastName(lastName);
+	}
 	@PostMapping("/users")
 	public User addUser(@RequestBody User user) {
 		return userService.add(user);
@@ -46,5 +54,7 @@ public class UserRestController {
 		userService.delete(uid);
 		return "User deleted Sucessfully with Id Number"+uid;
 	}
+	
+	
 	
 }

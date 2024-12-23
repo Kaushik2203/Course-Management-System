@@ -13,4 +13,9 @@ public interface UserService {
 	public User update(User user);
 	public void delete(Long id);
 	
+	 public List<User> findByFirstName(String firstName);
+	 public List<User> findByLastName(String lastName);
+	
+	 
+	 
 }
