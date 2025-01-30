@@ -2,6 +2,8 @@ package com.example.cms.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
@@ -18,6 +20,7 @@ import lombok.NoArgsConstructor;
 @Table(name="instructor")
 public class Instructor {
 	@Id
+	
 	private Long id;
 	@Column(name="qualification")
 	private String qualification;

@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.cms.Repository.InstructorRepository;
+import com.example.cms.Repository.UserRepository;
 import com.example.cms.entity.Instructor;
+import com.example.cms.entity.User;
 
 import jakarta.transaction.Transactional;
 
@@ -18,6 +20,10 @@ public class InstructorServiceImp implements InstructorService{
 	
 	@Autowired
 	private InstructorRepository instructorRepo;
+	
+	@Autowired
+	private UserRepository userRepo;
+
 	
 	@Override
 	public List<Instructor> getAll() {
@@ -33,9 +39,13 @@ public class InstructorServiceImp implements InstructorService{
 
 	@Override
 	public Instructor save(Instructor instructor) {
-		// TODO Auto-generated method stub
-		return instructorRepo.save(instructor);
-	}
+		User user = instructor.getUser();
+		if (user != null) { 
+			user = userRepo.findById(user.getId()).orElseThrow(() -> 
+			new IllegalArgumentException("User not found"));
+			instructor.setUser(user); }
+		return instructorRepo.save(instructor); }
+
 
 	@Override
 	public Instructor update(Instructor instructor) {
