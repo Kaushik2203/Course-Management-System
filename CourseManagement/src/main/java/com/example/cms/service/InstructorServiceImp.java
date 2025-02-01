@@ -53,6 +53,7 @@ public class InstructorServiceImp implements InstructorService{
 		return instructorRepo.save(instructor);
 	}
 
+	
 	@Override
 	public void delete(Long id) {
 		// TODO Auto-generated method stub

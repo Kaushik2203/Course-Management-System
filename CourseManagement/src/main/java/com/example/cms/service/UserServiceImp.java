@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.cms.Repository.UserRepository;
 import com.example.cms.entity.User;
+import com.example.cms.entity.User.Role;
 
 import jakarta.transaction.Transactional;
 
@@ -61,11 +62,16 @@ public class UserServiceImp implements UserService {
 		return userRepo.findByLastName(lastName);
 	}
 
-
-
-
+	@Override
+    public Optional<User> findByUsernameAndPassword(String username, String password) {
+        return userRepo.findByUsernameAndPassword(username, password);
+    }
 	
-
+	 @Override
+	  public Optional<User> findByUsernameAndRoleAndPassword(String username, Role role, String password) {
+		 
+	    return userRepo.findByUsernameAndRoleAndPassword(username, role, password);
+	  }
 	
 
 }

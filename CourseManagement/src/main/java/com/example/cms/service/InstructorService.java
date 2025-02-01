@@ -12,3 +12,4 @@ public interface InstructorService {
 	public Instructor update(Instructor instructor);
 	public void delete(Long id);
 }
+

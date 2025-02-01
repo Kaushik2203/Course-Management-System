@@ -7,7 +7,5 @@ import com.example.cms.entity.Instructor;
 
 @Repository
 public interface InstructorRepository extends JpaRepository<Instructor, Long> {
-
-	
 	
 }
