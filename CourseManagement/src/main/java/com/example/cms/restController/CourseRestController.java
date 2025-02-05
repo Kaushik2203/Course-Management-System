@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.cms.entity.Course;
 import com.example.cms.service.CourseService;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/cms/api")
 public class CourseRestController {
@@ -42,6 +43,10 @@ public class CourseRestController {
 	public String deleteCourse(@PathVariable("id") Long cid) {
 		courseService.deleteById(cid);
 		return "Course with Id= "+cid+" Deleted Sucessfully";
+	}
+	@GetMapping("/courses/instructors/{id}")
+	public List<Course> getCourseByInstructor(@PathVariable("id") Long instructorId){
+		return courseService.getCourseByInstructor(instructorId);
 	}
 	
 }

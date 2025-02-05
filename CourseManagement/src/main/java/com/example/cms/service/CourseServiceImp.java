@@ -58,6 +58,12 @@ public class CourseServiceImp implements CourseService {
 		courseRepo.deleteById(id);
 		
 	}
+
+	@Override
+	public List<Course> getCourseByInstructor(Long instructorId) {
+		// TODO Auto-generated method stub
+		return courseRepo.findByInstructorId(instructorId);
+	}
 	
 
 }

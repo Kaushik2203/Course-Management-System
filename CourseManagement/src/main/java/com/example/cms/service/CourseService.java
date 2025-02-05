@@ -13,5 +13,7 @@ public interface CourseService {
 	public Course save(Course course);
 	public Course update(Course course);
 	public void deleteById(Long id);
+	public List<Course> getCourseByInstructor(Long instructorId);
+	
 }
 
