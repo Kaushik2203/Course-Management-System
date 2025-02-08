@@ -19,7 +19,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "course")
-public class Course {
+public class Course {  
+	
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,8 +30,8 @@ public class Course {
 	private String courseName;
 	@Column(name="description")
 	private String description;
-	
+	 
 	@ManyToOne
 	@JoinColumn(name="instructor_id",nullable = false)
 	private Instructor instructor;
-}
+} 

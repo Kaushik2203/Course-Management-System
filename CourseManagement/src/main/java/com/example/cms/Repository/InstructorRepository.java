@@ -9,3 +9,4 @@ import com.example.cms.entity.Instructor;
 public interface InstructorRepository extends JpaRepository<Instructor, Long> {
 	
 }
+

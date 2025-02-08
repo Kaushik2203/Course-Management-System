@@ -33,3 +33,4 @@ public class Instructor {
 	@JoinColumn(name="id")
 	private User user;
 }
+

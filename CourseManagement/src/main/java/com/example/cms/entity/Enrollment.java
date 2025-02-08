@@ -30,3 +30,4 @@ public class Enrollment {
 	@Column(name = "enrollment_date")
 	private LocalDateTime enrollmentDate;
 }
+
