@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.example.cms.service.EnrollmentService;
 
 @RestController
 @RequestMapping("/cms/api")
+@CrossOrigin
 public class EnrollmentRestController {
 	@Autowired
 	private EnrollmentService enrollService;
@@ -43,6 +45,12 @@ public class EnrollmentRestController {
 		enrollService.deleteById(eid);
 		return "Enrollment with id " + eid + " deleted Sucessfully";
 	}
+	
+	@GetMapping("/enrollments/user/{userId}")
+	public List<Enrollment> getEnrollmentsByUserId(@PathVariable("userId") Long userId) {
+	    return enrollService.getEnrollmentsByUserId(userId); // ✅ Correct method name
+	}
+
 	
 	
 }

@@ -70,10 +70,17 @@ public class UserRestController {
 	public User addUser(@RequestBody User user) {
 		return userService.add(user);
 	}
-	@PutMapping("/users")
-	public User updateUser(@RequestBody User user) {
-		return userService.update(user);
+	@PutMapping("/users/{id}")
+	public User updateUser(@PathVariable Long id, @RequestBody User user) {
+	    User existingUser = userService.getById(id).orElseThrow(() -> new RuntimeException("User not found"));
+	    
+	    existingUser.setFirstName(user.getFirstName());
+	    existingUser.setLastName(user.getLastName());
+	    existingUser.setEmail(user.getEmail());
+
+	    return userService.update(existingUser);
 	}
+
 	
 	@DeleteMapping("/users/{id}")
 	public String deleteUser(@PathVariable("id") Long uid) {

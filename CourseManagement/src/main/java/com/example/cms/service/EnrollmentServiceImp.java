@@ -51,4 +51,11 @@ public class EnrollmentServiceImp implements EnrollmentService {
 		
 	}
 
+
+	@Override
+	public List<Enrollment> getEnrollmentsByUserId(Long id) {
+	    return enrollmentRepo.findByStudent_Id(id);
+	}
+
+
 }

@@ -13,5 +13,7 @@ public interface EnrollmentService {
 	public Enrollment save(Enrollment enroll);
 	public Enrollment update(Enrollment enroll);
 	public void deleteById(Long id);
+	List<Enrollment> getEnrollmentsByUserId(Long id);
+
 }
 

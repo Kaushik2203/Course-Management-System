@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.cms.entity.Course;
 import com.example.cms.service.CourseService;
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/cms/api")
 public class CourseRestController {
@@ -35,9 +35,10 @@ public class CourseRestController {
 	public Course addCourse(@RequestBody Course course) {
 		return courseService.save(course);
 	}
-	@PutMapping("/courses")
-	public Course updateCourse(@RequestBody Course course) {
-		return courseService.update(course);
+	@PutMapping("/courses/{id}")
+	public Course updateCourse(@PathVariable("id") Long id, @RequestBody Course course) {
+	    course.setId(id); // Ensure the course ID is set before updating
+	    return courseService.update(course);
 	}
 	@DeleteMapping("/courses/{id}")
 	public String deleteCourse(@PathVariable("id") Long cid) {
