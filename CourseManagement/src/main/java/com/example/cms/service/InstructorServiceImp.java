@@ -38,20 +38,32 @@ public class InstructorServiceImp implements InstructorService{
 	}
 
 	@Override
-	public Instructor save(Instructor instructor) {
-		User user = instructor.getUser();
-		if (user != null) { 
-			user = userRepo.findById(user.getId()).orElseThrow(() -> 
-			new IllegalArgumentException("User not found"));
-			instructor.setUser(user); }
-		return instructorRepo.save(instructor); }
+    public Instructor save(Instructor instructor) {
+        if (instructor.getUser() == null || instructor.getUser().getId() == null) {
+            throw new IllegalArgumentException("Instructor must be linked to a valid User.");
+        }
 
+        // Fetch the latest User from DB to avoid stale state errors
+        User user = userRepo.findById(instructor.getUser().getId())
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+        
+        instructor.setUser(user); // Ensure association with an up-to-date user
 
-	@Override
-	public Instructor update(Instructor instructor) {
-		// TODO Auto-generated method stub
-		return instructorRepo.save(instructor);
-	}
+        return instructorRepo.saveAndFlush(instructor);
+    }
+
+    @Override
+    public Instructor update(Instructor instructor) {
+        // Fetch the existing instructor before updating to prevent stale object issues
+        Instructor existingInstructor = instructorRepo.findById(instructor.getId())
+                .orElseThrow(() -> new IllegalArgumentException("Instructor not found"));
+
+        existingInstructor.setQualification(instructor.getQualification());
+        existingInstructor.setExpertise(instructor.getExpertise());
+        existingInstructor.setBio(instructor.getBio());
+
+        return instructorRepo.saveAndFlush(existingInstructor);
+    }
 
 	
 	@Override
