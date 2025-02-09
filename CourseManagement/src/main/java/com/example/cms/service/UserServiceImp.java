@@ -33,10 +33,27 @@ public class UserServiceImp implements UserService {
 	}
 
 	@Override
-	public User add(User user) {
-		// TODO Auto-generated method stub
-		return userRepo.save(user);
-	}
+    	public User add(User user) {
+        // Save the user first to get the generated ID
+        User savedUser = userRepo.saveAndFlush(user);
+
+        // If the user is an instructor, create a new Instructor entity
+        if (savedUser.getRole() == Role.INSTRUCTOR) {
+            if (instructorRepo.existsById(savedUser.getId())) {
+                throw new IllegalStateException("Instructor already exists for this user.");
+            }
+
+            Instructor instructor = new Instructor();
+            instructor.setQualification("Not specified");
+            instructor.setExpertise("Not specified");
+            instructor.setBio("No bio available.");
+            instructor.setUser(savedUser); // Associate with user
+            
+            instructorRepo.saveAndFlush(instructor); // Save and flush immediately
+        }
+
+        return savedUser;
+    }
 
 	@Override
 	public User update(User user) {
